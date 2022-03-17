@@ -13,11 +13,14 @@ public class Reserva {
 		
 	}
 
-	public Reserva(Suite suite, int quantidadePessoas, int quantidadeDias) {
+	public Reserva(Suite suite, int quantidadePessoas, int quantidadeDias, List<Hospede> hospedes) {
 		this.suite = suite;
 		this.quantidadePessoas = quantidadePessoas;
 		this.quantidadeDias = quantidadeDias;
+		this.hospedes = hospedes;
 	}
+
+
 
 	public Suite getSuite() {
 		return suite;
