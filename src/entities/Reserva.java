@@ -7,7 +7,7 @@ public class Reserva {
 	private Suite suite;
 	private int quantidadePessoas;
 	private int quantidadeDias;
-	private List<Hospede> hospedes = new ArrayList<Hospede>();
+	private List<Hospede> hospedes = new ArrayList<>();
 	
 	public Reserva() {
 		
@@ -54,7 +54,26 @@ public class Reserva {
 		this.hospedes = hospedes;
 	}
 	
+	public boolean verificarCapacidade() {
+		if(suite.getCapacidade() >= quantidadePessoas) {
+			System.out.println("Hospedagem permitida");
+			return true;
+		}else {
+			System.out.println("ops! Você tentou Hospedar a cima da capacidade maxima");
+			return false;
+		}
+	}
 	
+	public double calcularDiaria(double total) {
+		if(quantidadeDias > 7) {
+			total=suite.getValorDiaria() * quantidadeDias;
+			double desconto = total * 0.10;
+			total = total - desconto;
+		}else {
+			total = suite.getValorDiaria() * quantidadeDias;
+		}
+		return total;
+	}
 	
 	
 	

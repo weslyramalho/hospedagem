@@ -49,6 +49,11 @@ public class Suite {
 	public void setValorDiaria(double valorDiaria) {
 		this.valorDiaria = valorDiaria;
 	}
+
+	@Override
+	public String toString() {
+		return "Suite [numero=" + numero + "]";
+	}
 	
 	
 	

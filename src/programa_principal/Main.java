@@ -18,32 +18,26 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Hospede h1 = new Hospede(1, "Alberto", "São pAULO", 30);
-		Hospede h2 = new Hospede(2, "ANA", "Maranhão", 20);
-		Hospede h3 = new Hospede(3, "Maria", "Para", 100);
-		Hospede h4 = new Hospede(4, "Bia", "Aracaju", 90);
+		List<Hospede> hospedes = new ArrayList<Hospede>();
 		
-		Suite s1 = new Suite(1, "Casal", 2, 250.50);
-		Suite s2 = new Suite(2, "Solteiro", 1, 150.50);
-		Suite s3 = new Suite(3, "Mista", 4, 400.00);
+		Reserva reserva = new Reserva();
 		
-	
-
-
-		private List<Hospede> hospedes = new ArrayList<>();
+	  
 		
 			
 
-		Reserva reserva = new Reserva();
 		
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("###################################");
 		System.out.println("#=========== Hotel Cabum =========#");
 		int opc= 0;
-		while(opc != 2 ) {
+		while(opc != 3 ) {
 			System.out.println("Escolha uma opção: ");
 			System.out.println("1 - Reservar vaga");
-			System.out.println("2- sair");
+			System.out.println("2-Fechar conta");;
+			System.out.println("3- sair");
+
+
 			
 			opc = scanner.nextInt();
 			
@@ -59,19 +53,36 @@ public class Main {
 					System.out.println("Endereço: ");
 					String endereco = scanner.next();
 					System.out.println("idade: ");
-					int idade =  scanner.nextInt();
+					int idade = scanner.nextInt();
 					
-					Hospede hospedes = new Hospede(codigo, nome, endereco, idade);
-					r
-					
-					
-					
+					Hospede hospede = new Hospede(codigo, nome, endereco, idade);
+					hospedes.add(hospede);
 				}
-				System.out.println("Qual a suite? ");
-				Suite suite = s1;
+				System.out.println("Qual o numero da suite ");
+				int numero = scanner.nextInt();
+				System.out.println("qual o tipo da suite: ");
+				String tipo =scanner.next();
+				System.out.println("Qual a capacidade da suite: ");
+				int capacidade = scanner.nextInt();
+				System.out.println("Valor da diaria: ");
+				double valorDiaria = scanner.nextDouble();
+				
+				Suite suite = new Suite(numero, tipo, capacidade, valorDiaria);
+				
 				System.out.println("Quantos dias prentende ficar Hospedado? ");
 				int quantidadeDias = scanner.nextInt();
+				
+				reserva = new Reserva(suite, quantidadePessoas, quantidadeDias, hospedes);
 				break;
+			}
+			case 2: {
+				double total = 0;
+				System.out.println("**** Total diarias ****");
+				System.out.println("numero " + reserva.getSuite());
+				System.out.println("Quntedade de pessoas: " + reserva.getQuantidadePessoas());
+				System.out.println("Foram "+ reserva.getQuantidadeDias() + " diarias");
+				System.out.println("O valor total a pagar é: " + reserva.calcularDiaria(total));
+				
 			}
 			default:
 				System.out.println("Valor invalido");
